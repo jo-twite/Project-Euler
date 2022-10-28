@@ -19,6 +19,9 @@ public class Main0001 {
         int sumOfmultiplesOfFive = multiplesOfFive*(multiplesOfFive + 1)/2 * 5;
         int sumOfmultiplesOfFifteen = multiplesOfFifteen*(multiplesOfFifteen + 1)/2 * 15;
 
-        return sumOfmultiplesOfThree + sumOfmultiplesOfFive - ((n%5 == 0 || n%3 == 0)? n : 0) - sumOfmultiplesOfFifteen;
+        if(n%5 == 0 || n%3 == 0) {
+            sumOfmultiplesOfFifteen += n;
+        }
+        return sumOfmultiplesOfThree + sumOfmultiplesOfFive - sumOfmultiplesOfFifteen;
     }
 }
