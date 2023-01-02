@@ -3,6 +3,9 @@ package problem0001;
 
 // https://projecteuler.net/problem=1
 
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
 public class Main0001 {
 
 
@@ -11,14 +14,10 @@ public class Main0001 {
     }
 
     private static int multiplesOfThreeAndFive(int n) {
-        int multiplesOfThree = n/3;
-        int multiplesOfFive = n/5;
-        int multiplesOfFifteen = n/15;
-
-        int sumOfmultiplesOfThree = multiplesOfThree*(multiplesOfThree + 1)/2 * 3;
-        int sumOfmultiplesOfFive = multiplesOfFive*(multiplesOfFive + 1)/2 * 5;
-        int sumOfmultiplesOfFifteen = multiplesOfFifteen*(multiplesOfFifteen + 1)/2 * 15;
-
+        Function<Integer, Integer> sumOfMultiplesOf = (m) -> m * (n/m) * ((n/m) +1)/2;
+        int sumOfmultiplesOfThree = sumOfMultiplesOf.apply(3);
+        int sumOfmultiplesOfFive = sumOfMultiplesOf.apply(5);
+        int sumOfmultiplesOfFifteen = sumOfMultiplesOf.apply(15);
         if(n%5 == 0 || n%3 == 0) {
             sumOfmultiplesOfFifteen += n;
         }
